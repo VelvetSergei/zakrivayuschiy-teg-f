@@ -25,6 +25,37 @@
   background-attachment: fixed;
 }
 
+
+/*Фильтры*/
+
+.card__image-gray {
+  filter: grayscale(75%);
+}
+
+.card__image-saturate {
+  filter: saturate(400%);
+}
+
+.card__image-hrotate {
+  filter: hue-rotate(30deg);
+}
+
+.card__image-invert {
+  filter: invert(90%);
+}
+
+.card__image-sepia {
+  filter: sepia(90%);
+}
+
+.card__image-blur {
+  filter: blur(10px);
+}
+
+.card__image-opacity {
+  filter: hue-rotate(100deg) opacity(70%);
+}
+
 /* Отдельный класс для ширины блока */
 .width-content {
   width: var(--size-content);
@@ -135,6 +166,142 @@
   position: relative;
 }
 
+.card__like-button::before {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: var(--accent-color);
+  transform: scaleX(0);
+  transition: 0.5s ease-in-out;
+  transform-origin: left;
+}
+
+.card__icon-button {
+  padding: 0.5px 0;
+  display: flex;
+  background: transparent;
+  align-items: center;
+  border: 2px solid transparent;
+}
+
+.card__like-button:hover {
+  cursor: pointer;
+}
+
+.card__like-button:hover::before {
+  transform: scaleX(1);
+}  
+
+.card__like-button:focus {
+  outline: none;
+  transition: 0.3s;
+}
+
+.card__like-button:focus-visible {
+  border: 2px solid var(--accent-color);
+  box-shadow: 2px 2px 0px 0px var(--accent-color);
+}
+
+.button__text, .icon-m {
+  mix-blend-mode: difference;
+  position: relative;
+  color: var(--button-text-color);
+}
+
+
+/*Сердце*/
+
+.card__icon-button:focus {
+  outline: none;
+}
+
+.card__icon-button:focus-visible {
+  border: 2px solid var(--accent-color);
+  transition: 0.3s ease;
+}
+
+.like-icon {
+  cursor: pointer;
+}
+
+.like-icon:hover {
+  cursor: pointer;
+}
+
+.sparks {
+  opacity: 0;
+}
+
+.core {
+  fill: transparent;
+  transition: 0.3s;
+}
+
+.main-body {
+  fill: transparent;
+  transition: 0.3s;
+}
+
+.like-icon:hover .core {
+  fill: var(--accent-color);
+}
+
+.like-icon:not(:hover) .core {
+  transition-delay: 0.03s;
+}
+
+.like-icon:hover .main-body {
+  fill: var(--accent-color);
+  transition-delay: 0.05s;
+}
+
+.like-icon:not(:hover) .main-body {
+  transition: 0.3s;
+}
+
+.like-icon:active .core {
+  fill: var(--sparks-color);
+}
+
+.like-icon:active .main-body {
+  fill: var(--sparks-color);
+  transition-delay: 0.05s;
+}
+
+.like-icon.is-liked .core {
+  fill: var(--sparks-color);
+}
+
+.like-icon.is-liked .main-body {
+  fill: var(--sparks-color);
+  transition-delay: 0.05s;
+}
+
+.like-icon.is-liked .contour {
+  transition-delay: 0.06s;
+  transition: 0.3s;
+  fill: var(--sparks-color);
+}
+
+.like-icon.is-liked {
+  animation: heart 0.3s ease-in alternate;
+  transform-origin: center;
+  transition-delay: 0.1s;
+}
+
+.like-icon.is-liked .sparks {
+  animation: sparks 0.3s ease-in alternate;
+  transition-delay: 0.3s;
+}
+
+.like-icon .contour {
+  fill: var(--accent-color);
+  transition: 0.1s;
+}
+
 /*Футер*/
 
 .footer .card__like-button {
@@ -163,7 +330,7 @@
   text-transform: uppercase;
 }
 
-.dialog-container {
+.dialog-conteiner {
   display: flex;
   gap: 20px;
   padding-bottom: 30px;
@@ -185,13 +352,12 @@
   filter: opacity(0.75);
 } 
 
-
 /*375*/
 
-@media (max-width: 699px) {
+@media (width <= 375px) {
 
   .width-content {
-    inline-size: 100%;
+    inline-size: 100vw;
   }  
 
   .header {
