@@ -2,8 +2,8 @@
 :root {
   --main-font: Inter-Variable;
   --accent-font: "Press Start 2P";
-  --thickness-text-card: 400;
-  --thickness-title-card: 700;
+  --thickness-text-card: 410;
+  --thickness-title-card: 715;
   --background-color: #fff;
   --background-image: repeating-linear-gradient(
       to right,
